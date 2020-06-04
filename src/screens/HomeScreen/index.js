@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { MonoText } from '../../components/StyledText';
 import styles from './styles';
 
 export default function HomeScreen() {
@@ -13,7 +12,7 @@ export default function HomeScreen() {
           <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
 
           <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
+            <Text>screens/HomeScreen.js</Text>
           </View>
 
           <Text style={styles.getStartedText}>
@@ -32,7 +31,7 @@ export default function HomeScreen() {
         <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
         <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</MonoText>
+          <Text style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</Text>
         </View>
       </View>
     </View>

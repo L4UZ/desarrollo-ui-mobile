@@ -4,21 +4,28 @@ import * as React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 
-import { theme } from './constants/theme';
-import useCachedResources from './hooks/useCachedResources';
-import BottomTabNavigator from './navigation/BottomTabNavigator';
-import LinkingConfiguration from './navigation/LinkingConfiguration';
+import { theme } from './src/constants/theme';
+import useCachedResources from './src/hooks/useCachedResources';
+import BottomTabNavigator from './src/navigation/BottomTabNavigator';
+import LinkingConfiguration from './src/navigation/LinkingConfiguration';
+import AuthProvider from './src/AuthProvider';
 
 const Stack = createStackNavigator();
 
-export default function App(props) {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+});
+
+const App = () => {
   const isLoadingComplete = useCachedResources();
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <PaperProvider theme={theme}>
+  if (!isLoadingComplete) return null;
+  return (
+    <PaperProvider theme={theme}>
+      <AuthProvider>
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
           <NavigationContainer linking={LinkingConfiguration}>
@@ -27,14 +34,9 @@ export default function App(props) {
             </Stack.Navigator>
           </NavigationContainer>
         </View>
-      </PaperProvider>
-    );
-  }
-}
+      </AuthProvider>
+    </PaperProvider>
+  );
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
+export default App;

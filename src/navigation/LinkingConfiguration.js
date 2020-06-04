@@ -7,7 +7,6 @@ export default {
       path: 'root',
       screens: {
         Home: 'home',
-        Links: 'links',
         Signin: 'signin',
       },
     },
