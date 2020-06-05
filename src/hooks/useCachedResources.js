@@ -13,7 +13,9 @@ export default function useCachedResources() {
         SplashScreen.preventAutoHideAsync();
 
         // Load fonts
-        await Font.loadAsync(Ionicons.font);
+        await Font.loadAsync({
+          ...Ionicons.font,
+        });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);

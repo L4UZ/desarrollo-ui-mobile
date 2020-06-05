@@ -1,16 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  paper: {
-    // marginTop: theme.spacing(12),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    // margin: theme.spacing(1),
-    // backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     // marginTop: theme.spacing(3),
   },
