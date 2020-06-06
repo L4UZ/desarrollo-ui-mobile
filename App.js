@@ -6,7 +6,7 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import apiClient from './src/api/apiClient';
-import { theme } from './src/constants/theme';
+import Theme from './src/constants/Theme';
 import useCachedResources from './src/hooks/useCachedResources';
 import BottomTabNavigator from './src/navigation/BottomTabNavigator';
 import LinkingConfiguration from './src/navigation/LinkingConfiguration';
@@ -26,7 +26,7 @@ const App = () => {
 
   if (!isLoadingComplete) return null;
   return (
-    <PaperProvider theme={theme}>
+    <PaperProvider theme={Theme}>
       <ApolloProvider client={apiClient}>
         <AuthProvider>
           <View style={styles.container}>
