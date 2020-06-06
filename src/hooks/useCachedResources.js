@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
@@ -13,7 +13,9 @@ export default function useCachedResources() {
         SplashScreen.preventAutoHideAsync();
 
         // Load fonts
-        await Font.loadAsync(Ionicons.font);
+        await Font.loadAsync({
+          ...Ionicons.font,
+        });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);

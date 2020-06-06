@@ -1,23 +1,13 @@
 import { StyleSheet } from 'react-native';
+import Layout from '../../constants/Layout';
 
 export default StyleSheet.create({
-  paper: {
-    // marginTop: theme.spacing(12),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    // margin: theme.spacing(1),
-    // backgroundColor: theme.palette.secondary.main,
-  },
   form: {
-    // marginTop: theme.spacing(3),
+    height: Layout.window.height,
   },
-  submit: {
-    // margin: theme.spacing(3, 0, 2),
-  },
-  errorMessage: {
-    marginTop: '1rem',
+  innerContainer: {
+    justifyContent: 'center',
+    flex: 1,
+    marginBottom: 200,
   },
 });
