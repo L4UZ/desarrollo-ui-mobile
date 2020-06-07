@@ -15,8 +15,10 @@ const getHeaderTitle = route => {
   switch (routeName) {
     case 'Trips':
       return 'Trips';
-    case 'Continents':
-      return 'Continents';
+    case 'Trip':
+      return 'Trip';
+    case 'Place':
+      return 'Place';
     default:
       return '';
   }
@@ -26,7 +28,7 @@ const TripsNavigator = ({ navigation, route }) => {
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <Stack.Navigator initialRouteName={INITIAL_ROUTE_NAME} screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       <Stack.Screen name="Trips" component={TripsScreen} />
       <Stack.Screen name="Trip" component={TripDetailScreen} />
       <Stack.Screen name="Place" component={PlaceDetailScreen} />

@@ -43,31 +43,32 @@ const getHeaderTitle = route => {
 const BottomTabNavigator = ({ navigation, route }) => {
   const { token } = useAuth();
 
-  navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+  navigation.setOptions({ headerTitle: getHeaderTitle(route), headerShown: false });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME} screenOptions={{}}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
       {token ? (
         <>
           <BottomTab.Screen
             name="Continents"
             component={ContinentsNavigator}
             options={{
-              tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,
+              tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-globe" />,
             }}
           />
           <BottomTab.Screen
             name="Trips"
             component={TripsNavigator}
             options={{
-              tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,
+              tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-airplane" />,
             }}
           />
           <BottomTab.Screen
             name="PlacesByDistance"
             component={PlacesByDistanceNavigator}
             options={{
-              tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,
+              title: 'Places By Distance',
+              tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-map" />,
             }}
           />
           <BottomTab.Screen
@@ -93,7 +94,7 @@ const BottomTabNavigator = ({ navigation, route }) => {
             component={HomeScreen}
             options={{
               title: 'Sign Up',
-              tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+              tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person-add" />,
             }}
           />
         </>
