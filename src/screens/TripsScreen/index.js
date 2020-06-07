@@ -15,6 +15,7 @@ const TripsScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.helpContainer}>
+          <Button onPress={() => navigation.navigate('AddTrip')}>Add Trip</Button>
           <Button onPress={() => navigation.navigate('Trip', { tripId: 'TRIP_ID' })}>
             Go to trip
           </Button>
