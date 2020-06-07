@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import { object, shape, func } from 'prop-types';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -17,24 +18,18 @@ import { useAuth } from '../AuthProvider';
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Signin';
 
-const getHeaderTitle = route => {
+const getHeaderOptions = route => {
   const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
 
   switch (routeName) {
     case 'Signin':
-      return 'Sign in';
     case 'Signup':
-      return 'Sign up';
     case 'Continents':
-      return 'Continents';
     case 'Trips':
-      return 'Trips';
-    case 'HomeScreen':
-      return 'HomeScreen';
     case 'PlacesByDistance':
-      return 'Places by Distance';
+      return { headerShown: false };
     case 'Profile':
-      return 'Profile';
+      return { headerShown: true };
     default:
       return '';
   }
@@ -43,7 +38,7 @@ const getHeaderTitle = route => {
 const BottomTabNavigator = ({ navigation, route }) => {
   const { token } = useAuth();
 
-  navigation.setOptions({ headerTitle: getHeaderTitle(route), headerShown: false });
+  navigation.setOptions(getHeaderOptions(route));
 
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>

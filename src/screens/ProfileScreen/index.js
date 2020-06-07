@@ -6,7 +6,7 @@ import { Button } from 'react-native-paper';
 import { useAuth } from '../../AuthProvider';
 import styles from './styles';
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen = () => {
   const { resetToken } = useAuth();
 
   return (

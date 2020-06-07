@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 import styles from './styles';
 
-const PlaceDetailScreen = ({ navigation }) => {
+const PlaceDetailScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>

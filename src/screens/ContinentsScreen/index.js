@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button } from 'react-native-paper';
+import { shape, func } from 'prop-types';
 
 import styles from './styles';
 
@@ -23,6 +24,12 @@ const ContinentsScreen = ({ navigation }) => {
 
 ContinentsScreen.navigationOptions = {
   header: null,
+};
+
+ContinentsScreen.propTypes = {
+  navigation: shape({
+    navigate: func.isRequired,
+  }).isRequired,
 };
 
 export default ContinentsScreen;
