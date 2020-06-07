@@ -14,3 +14,4 @@ web-build/
 
 # Environment variables
 .env
+debug.log

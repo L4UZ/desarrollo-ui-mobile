@@ -36,10 +36,10 @@ const BottomTabNavigator = ({ navigation, route }) => {
         }}
       />
       <BottomTab.Screen
-        name="Login"
+        name="Sign In"
         component={SigninScreen}
         options={{
-          title: 'Login',
+          title: 'Sign In',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,
         }}
       />

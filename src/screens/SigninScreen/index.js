@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { Title, TextInput, Button, ActivityIndicator, HelperText } from 'react-native-paper';
 import { useMutation } from '@apollo/react-hooks';
 import { Formik } from 'formik';
@@ -7,6 +7,7 @@ import { Formik } from 'formik';
 import { useAuth } from '../../AuthProvider';
 import { SIGN_IN_MUTATION } from '../../api/mutations';
 import { signInSchema } from '../../constants/validations';
+import Logo from '../../assets/images/logo192.png';
 
 import styles from './styles';
 
@@ -22,8 +23,9 @@ const SigninScreen = () => {
   });
   return (
     <View style={styles.form}>
+      <Image style={styles.logo} source={Logo} />
       <View style={styles.innerContainer}>
-        <Title>Sign in</Title>
+        <Title style={{ alignSelf: 'center' }}>SIGN IN</Title>
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={signInSchema}
@@ -55,7 +57,7 @@ const SigninScreen = () => {
                   </HelperText>
                 )}
               </View>
-              <View>
+              <View style={{ marginTop: '2%' }}>
                 <TextInput
                   autoCapitalize="none"
                   label="Password"
