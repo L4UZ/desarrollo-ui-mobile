@@ -15,7 +15,9 @@ const ContinentsScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.helpContainer}>
-          <Button onPress={() => navigation.navigate('Region')}>Go to region</Button>
+          <Button onPress={() => navigation.navigate('Region', { regionId: 'REGION_ID' })}>
+            Go to region
+          </Button>
         </View>
       </ScrollView>
     </View>

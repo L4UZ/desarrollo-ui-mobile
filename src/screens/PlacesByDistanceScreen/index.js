@@ -15,7 +15,11 @@ const PlacesByDistanceScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.helpContainer}>
-          <Button onPress={() => navigation.navigate('Place')}>Go to place</Button>
+          <Button
+            onPress={() => navigation.navigate('Place', { placeId: 'PLACE_ID_FROM_DISTANCE' })}
+          >
+            Go to place
+          </Button>
         </View>
       </ScrollView>
     </View>
