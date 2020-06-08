@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { string, bool } from 'prop-types';
 
-import theme from '../constants/theme';
+import theme from '../constants/Theme';
 
 const TabBarIcon = ({ name, focused }) => (
   <Ionicons
