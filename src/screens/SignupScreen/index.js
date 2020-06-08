@@ -26,7 +26,6 @@ const SignupScreen = () => {
   const [signUp, { loading, error }] = useMutation(SIGN_UP_MUTATION, {
     onCompleted: ({ signUp: token }) => {
       setToken(token);
-      // TODO: Redirect
     },
     onError: () => {},
   });
