@@ -7,12 +7,16 @@ export default StyleSheet.create({
     justifyContent: 'center',
     marginTop: 25,
   },
+  keyboard: {
+    flex: 1,
+    height: 100,
+  },
   innerContainer: {
     justifyContent: 'center',
     flex: 1,
-    marginBottom: 50,
+    marginTop: 40,
+    marginBottom: 100,
     marginHorizontal: 25,
-    marginTop: -110,
   },
   formElement: {
     marginTop: 20,

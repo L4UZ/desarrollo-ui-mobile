@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { Title, TextInput, Button, ActivityIndicator, HelperText } from 'react-native-paper';
 import { useMutation } from '@apollo/react-hooks';
 import { Formik } from 'formik';
@@ -7,6 +7,7 @@ import { Formik } from 'formik';
 import { useAuth } from '../../AuthProvider';
 import { SIGN_IN_MUTATION } from '../../api/mutations';
 import { signInSchema } from '../../constants/validations';
+import Logo from '../../assets/images/logo192.png';
 
 import styles from './styles';
 
@@ -20,9 +21,10 @@ const SigninScreen = () => {
     onError: () => {},
   });
   return (
-    <View style={styles.form}>
+    <View style={styles.mainContainer}>
+      <Image style={styles.logo} source={Logo} />
       <View style={styles.innerContainer}>
-        <Title>Sign in</Title>
+        <Title style={{ alignSelf: 'center' }}>SIGN IN</Title>
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={signInSchema}
@@ -54,7 +56,7 @@ const SigninScreen = () => {
                   </HelperText>
                 )}
               </View>
-              <View>
+              <View style={{ marginTop: 5 }}>
                 <TextInput
                   autoCapitalize="none"
                   label="Password"
@@ -80,7 +82,7 @@ const SigninScreen = () => {
             </View>
           )}
         </Formik>
-        {loading && <ActivityIndicator size="large" animating />}
+        {loading && <ActivityIndicator size="large" animating style={{ marginTop: 20 }} />}
         {error && (
           <HelperText type="error" visible>
             Wrong email or password
