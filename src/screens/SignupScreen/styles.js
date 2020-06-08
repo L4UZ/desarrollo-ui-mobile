@@ -3,9 +3,9 @@ import Layout from '../../constants/Layout';
 
 export default StyleSheet.create({
   mainContainer: {
-    justifyContent: 'center',
-    marginTop: '20',
     height: Layout.window.height,
+    justifyContent: 'center',
+    marginTop: 25,
   },
   keyboard: {
     flex: 1,
@@ -14,18 +14,17 @@ export default StyleSheet.create({
   innerContainer: {
     justifyContent: 'center',
     flex: 1,
+    marginTop: 40,
     marginBottom: 100,
-    marginLeft: 5,
-    marginRight: 5,
+    marginHorizontal: 25,
   },
   formElement: {
-    marginTop: 5,
+    marginTop: 20,
   },
   logo: {
     width: 100,
     height: 100,
-    marginTop: 10,
+    marginTop: 100,
     alignSelf: 'center',
-    marginBottom: 10,
   },
 });

@@ -2,24 +2,25 @@ import { StyleSheet } from 'react-native';
 import Layout from '../../constants/Layout';
 
 export default StyleSheet.create({
-  form: {
+  mainContainer: {
     height: Layout.window.height,
-    marginTop: 20,
+    justifyContent: 'center',
+    marginTop: 25,
   },
   innerContainer: {
     justifyContent: 'center',
     flex: 1,
-    marginBottom: 100,
-    marginLeft: 5,
-    marginRight: 5,
+    marginBottom: 50,
+    marginHorizontal: 25,
+    marginTop: -110,
   },
   formElement: {
-    marginTop: 5,
+    marginTop: 20,
   },
   logo: {
     width: 100,
     height: 100,
-    marginTop: 10,
+    marginTop: 100,
     alignSelf: 'center',
   },
 });

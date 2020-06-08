@@ -21,7 +21,7 @@ const SigninScreen = () => {
     onError: () => {},
   });
   return (
-    <View style={styles.form}>
+    <View style={styles.mainContainer}>
       <Image style={styles.logo} source={Logo} />
       <View style={styles.innerContainer}>
         <Title style={{ alignSelf: 'center' }}>SIGN IN</Title>
@@ -56,7 +56,7 @@ const SigninScreen = () => {
                   </HelperText>
                 )}
               </View>
-              <View style={{ marginTop: '2%' }}>
+              <View style={{ marginTop: 5 }}>
                 <TextInput
                   autoCapitalize="none"
                   label="Password"
@@ -82,7 +82,7 @@ const SigninScreen = () => {
             </View>
           )}
         </Formik>
-        {loading && <ActivityIndicator size="large" animating style={{ marginTop: '4%' }} />}
+        {loading && <ActivityIndicator size="large" animating style={{ marginTop: 20 }} />}
         {error && (
           <HelperText type="error" visible>
             Wrong email or password
