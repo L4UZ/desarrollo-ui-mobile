@@ -40,15 +40,15 @@ const PlacesByDistanceScreen = ({ navigation }) => {
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <>
           <View style={styles.helpContainer}>
-            <Button
-              onPress={() => navigation.navigate('Place', { placeId: 'PLACE_ID_FROM_DISTANCE' })}
-            >
-              Go to place
-            </Button>
+            {data.placesByDistance.map(place => (
+              <Button
+                key={place.id}
+                onPress={() => navigation.navigate('Place', { placeId: place.id })}
+              >
+                <Text>{`${place.name} (${place.distance})`}</Text>
+              </Button>
+            ))}
           </View>
-          {data.placesByDistance.map(place => (
-            <Text key={place.id}>{`${place.name} (${place.distance})`}</Text>
-          ))}
         </>
       </ScrollView>
     </View>
