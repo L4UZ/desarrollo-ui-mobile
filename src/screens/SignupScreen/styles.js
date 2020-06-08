@@ -4,9 +4,7 @@ import Layout from '../../constants/Layout';
 export default StyleSheet.create({
   mainContainer: {
     justifyContent: 'center',
-    // alignItems: 'center',
-  },
-  form: {
+    marginTop: '20%',
     height: Layout.window.height,
   },
   keyboard: {

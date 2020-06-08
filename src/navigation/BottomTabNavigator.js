@@ -9,7 +9,6 @@ import ContinentsNavigator from './ContinentsNavigator';
 import PlacesByDistanceNavigator from './PlacesByDistanceNavigator';
 import TripsNavigator from './TripsNavigator';
 
-import HomeScreen from '../screens/HomeScreen';
 import SigninScreen from '../screens/SigninScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import SignupScreen from '../screens/SignupScreen';
@@ -87,7 +86,7 @@ const BottomTabNavigator = ({ navigation, route }) => {
           />
           <BottomTab.Screen
             name="Signup"
-            component={HomeScreen}
+            component={SignupScreen}
             options={{
               title: 'Sign Up',
               tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person-add" />,

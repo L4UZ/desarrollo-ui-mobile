@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Image, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { Title, TextInput, Button, ActivityIndicator, HelperText } from 'react-native-paper';
 import { useMutation } from '@apollo/react-hooks';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import { pick } from 'lodash';
 
 import { useAuth } from '../../AuthProvider';
@@ -34,7 +34,7 @@ const SignupScreen = () => {
   return (
     <View style={styles.mainContainer}>
       <KeyboardAvoidingView enabled>
-        <ScrollView style={styles.form} keyboardShouldPersistTaps="handled">
+        <ScrollView keyboardShouldPersistTaps="handled">
           <Image style={styles.logo} source={Logo} />
           <View style={styles.innerContainer}>
             <Title style={{ alignSelf: 'center' }}>SIGN UP</Title>

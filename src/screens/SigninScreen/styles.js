@@ -4,11 +4,12 @@ import Layout from '../../constants/Layout';
 export default StyleSheet.create({
   form: {
     height: Layout.window.height,
+    marginTop: '20%',
   },
   innerContainer: {
     justifyContent: 'center',
     flex: 1,
-    marginBottom: 200,
+    marginBottom: 100,
     marginLeft: '5%',
     marginRight: '5%',
   },
