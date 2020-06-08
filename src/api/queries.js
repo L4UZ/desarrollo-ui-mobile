@@ -54,3 +54,14 @@ export const PLACE_DETAIL = gql`
     }
   }
 `;
+
+export const PLACES_BY_DISTANCE = gql`
+  query PlacesByDistance($coords: PlacesByDistanceInput!) {
+    placesByDistance(coords: $coords) {
+      distance
+      id
+      name
+      imagesSrc
+    }
+  }
+`;

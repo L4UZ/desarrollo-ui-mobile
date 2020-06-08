@@ -17,7 +17,6 @@ const SigninScreen = () => {
   const [signIn, { loading, error }] = useMutation(SIGN_IN_MUTATION, {
     onCompleted: ({ signIn: token }) => {
       setToken(token);
-      // TODO: Redirect
     },
     onError: () => {},
   });
