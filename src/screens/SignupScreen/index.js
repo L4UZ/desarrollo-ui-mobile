@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Image, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { Title, TextInput, Button, ActivityIndicator, HelperText } from 'react-native-paper';
 import { useMutation } from '@apollo/react-hooks';
-import { Formik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { pick } from 'lodash';
 
 import { useAuth } from '../../AuthProvider';
@@ -65,11 +65,11 @@ const SignupScreen = () => {
                       value={values.firstName}
                       error={errors.firstName && touched.firstName}
                     />
-                    {errors?.firstName && (
+                    {errors.firstName ? (
                       <HelperText type="error" visible>
                         {errors.firstName}
                       </HelperText>
-                    )}
+                    ) : null}
                   </View>
                   <View style={{ marginTop: '2%' }}>
                     <TextInput
@@ -86,11 +86,11 @@ const SignupScreen = () => {
                       value={values.lastName}
                       error={errors.lastName && touched.lastName}
                     />
-                    {errors?.lastName && (
+                    {errors.lastName ? (
                       <HelperText type="error" visible>
                         {errors.lastName}
                       </HelperText>
-                    )}
+                    ) : null}
                   </View>
                   <View style={{ marginTop: '2%' }}>
                     <TextInput
@@ -107,11 +107,11 @@ const SignupScreen = () => {
                       value={values.email}
                       error={errors.email && touched.email}
                     />
-                    {errors?.email && (
+                    {errors.email ? (
                       <HelperText type="error" visible>
                         {errors.email}
                       </HelperText>
-                    )}
+                    ) : null}
                   </View>
                   <View style={{ marginTop: '2%' }}>
                     <TextInput
@@ -127,11 +127,11 @@ const SignupScreen = () => {
                       value={values.password}
                       error={errors.password && touched.password}
                     />
-                    {errors?.password && (
+                    {errors.password ? (
                       <HelperText type="error" visible>
                         {errors.password}
                       </HelperText>
-                    )}
+                    ) : null}
                   </View>
                   <View style={{ marginTop: '2%' }}>
                     <TextInput
@@ -147,11 +147,11 @@ const SignupScreen = () => {
                       value={values.passwordConfirmation}
                       error={errors.passwordConfirmation && touched.passwordConfirmation}
                     />
-                    {errors?.passwordConfirmation && (
+                    {errors.passwordConfirmation ? (
                       <HelperText type="error" visible>
                         {errors.passwordConfirmation}
                       </HelperText>
-                    )}
+                    ) : null}
                   </View>
                   <Button mode="contained" onPress={handleSubmit} style={styles.formElement}>
                     Sign up
