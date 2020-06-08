@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import SigninScreen from '../screens/SigninScreen';
+import SignupScreen from '../screens/SignupScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -37,7 +38,7 @@ const BottomTabNavigator = ({ navigation, route }) => {
       />
       <BottomTab.Screen
         name="Sign In"
-        component={SigninScreen}
+        component={SignupScreen}
         options={{
           title: 'Sign In',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,

@@ -83,7 +83,7 @@ const SigninScreen = () => {
             </View>
           )}
         </Formik>
-        {loading && <ActivityIndicator size="large" animating />}
+        {loading && <ActivityIndicator size="large" animating style={{ marginTop: '4%' }} />}
         {error && (
           <HelperText type="error" visible>
             Wrong email or password
