@@ -9,7 +9,7 @@ const Provider = ({ children }) => {
   const [token, setToken] = useState(null);
 
   useEffect(async () => {
-    const storedToken = await AsyncStorage.getItem('token');
+    const storedToken = await AsyncStorage.getItem('UTRAVEL_TOKEN');
     if (storedToken) setToken(storedToken);
     await SplashScreen.hideAsync();
   }, []);
@@ -17,8 +17,8 @@ const Provider = ({ children }) => {
   const setTokenOverride = newToken => {
     setToken(newToken);
 
-    if (!newToken) AsyncStorage.removeItem('token');
-    else AsyncStorage.setItem('token', newToken);
+    if (!newToken) AsyncStorage.removeItem('UTRAVEL_TOKEN');
+    else AsyncStorage.setItem('UTRAVEL_TOKEN', newToken);
   };
 
   const value = { token, setToken: setTokenOverride };
