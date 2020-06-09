@@ -12,4 +12,10 @@ export default StyleSheet.create({
     marginTop: 15,
     alignItems: 'center',
   },
+  form: {
+    marginTop: 10,
+  },
+  formElement: {
+    marginTop: 20,
+  },
 });
