@@ -1,11 +1,29 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { AsyncStorage } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
 
 const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 const Provider = ({ children }) => {
   const [token, setToken] = useState(null);
-  const value = { token, setToken };
+
+  useEffect(() => {
+    (async () => {
+      const storedToken = await AsyncStorage.getItem('UTRAVEL_TOKEN');
+      if (storedToken) setToken(storedToken);
+      await SplashScreen.hideAsync();
+    })();
+  }, []);
+
+  const setTokenOverride = newToken => {
+    setToken(newToken);
+
+    if (!newToken) AsyncStorage.removeItem('UTRAVEL_TOKEN');
+    else AsyncStorage.setItem('UTRAVEL_TOKEN', newToken);
+  };
+
+  const value = { token, setToken: setTokenOverride };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
