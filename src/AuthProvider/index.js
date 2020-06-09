@@ -8,10 +8,12 @@ const AuthContext = createContext();
 const Provider = ({ children }) => {
   const [token, setToken] = useState(null);
 
-  useEffect(async () => {
-    const storedToken = await AsyncStorage.getItem('UTRAVEL_TOKEN');
-    if (storedToken) setToken(storedToken);
-    await SplashScreen.hideAsync();
+  useEffect(() => {
+    (async () => {
+      const storedToken = await AsyncStorage.getItem('UTRAVEL_TOKEN');
+      if (storedToken) setToken(storedToken);
+      await SplashScreen.hideAsync();
+    })();
   }, []);
 
   const setTokenOverride = newToken => {
