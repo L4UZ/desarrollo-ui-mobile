@@ -78,7 +78,7 @@ const BottomTabNavigator = ({ navigation, route }) => {
         <>
           <BottomTab.Screen
             name="Signin"
-            component={ContinentsNavigator}
+            component={SigninScreen}
             options={{
               title: 'Sign In',
               tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,
