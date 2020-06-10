@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Button } from 'react-native-paper';
+import { Button, Title, Card } from 'react-native-paper';
 import { shape, func, string } from 'prop-types';
+import { useQuery } from '@apollo/react-hooks';
 
+import { REGION_DETAIL } from '../../api/queries';
 import styles from './styles';
 
 const RegionScreen = ({
@@ -12,18 +14,26 @@ const RegionScreen = ({
     params: { regionId },
   },
 }) => {
+  const { data, loading } = useQuery(REGION_DETAIL, { variables: { regionId } });
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View>
-          <Text>This is the {regionId} RegionScreen view</Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <Button onPress={() => navigation.navigate('Place', { placeId: 'PLACE_ID_FROM_REGION' })}>
-            Go to place
-          </Button>
-        </View>
+        {data?.region.places.map(place => (
+          <>
+            <Title key={place.id}>{place.name}</Title>
+            <Card
+              onPress={() => navigation.navigate('Place', { placeId: place.id })}
+              style={{ marginBottom: 20 }}
+              key={place.id}
+            >
+              <Card.Content>
+                <Title>{place.name}</Title>
+              </Card.Content>
+              <Card.Cover source={{ uri: place.imagesSrc[0] }} />
+            </Card>
+          </>
+        ))}
       </ScrollView>
     </View>
   );

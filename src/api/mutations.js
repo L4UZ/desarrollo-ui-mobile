@@ -23,3 +23,39 @@ export const ADD_REVIEW_MUTATION = gql`
     }
   }
 `;
+
+export const ADD_TRIP = gql`
+  mutation AddTrip($trip: TripInput!) {
+    addTrip(trip: $trip) {
+      id
+      user {
+        email
+        firstName
+        lastName
+      }
+      name
+      places {
+        id
+        name
+      }
+    }
+  }
+`;
+
+export const ADD_PLACE_TRIP = gql`
+  mutation AddPlaceToTrip($tripPlace: TripPlaceInput!) {
+    addPlaceToTrip(tripPlace: $tripPlace) {
+      id
+      user {
+        email
+        firstName
+        lastName
+      }
+      name
+      places {
+        id
+        name
+      }
+    }
+  }
+`;

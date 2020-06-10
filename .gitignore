@@ -15,3 +15,5 @@ web-build/
 # Environment variables
 .env
 debug.log
+
+package-lock.json
