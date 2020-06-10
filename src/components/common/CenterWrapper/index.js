@@ -4,10 +4,10 @@ import { node } from 'prop-types';
 
 import styles from './styles';
 
-const Loading = ({ children }) => <View style={styles.container}>{children}</View>;
+const CenterWrapper = ({ children }) => <View style={styles.container}>{children}</View>;
 
-Loading.propTypes = {
+CenterWrapper.propTypes = {
   children: node.isRequired,
 };
 
-export default Loading;
+export default CenterWrapper;

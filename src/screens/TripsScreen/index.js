@@ -5,9 +5,10 @@ import { Button, Title, Card } from 'react-native-paper';
 import { shape, func } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 
-import styles from './styles';
 import { useAuth } from '../../AuthProvider/index';
 import { USER_TRIPS } from '../../api/queries';
+import LoadingWrapper from '../../components/common/LoadingWrapper';
+import styles from './styles';
 
 const TripsScreen = ({ navigation }) => {
   const { token } = useAuth();
@@ -15,19 +16,16 @@ const TripsScreen = ({ navigation }) => {
   const { data, loading } = useQuery(USER_TRIPS, { variables: { token } });
 
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View style={styles.helpContainer}>
-          <Button onPress={() => navigation.navigate('AddTrip')}>Add Trip</Button>
-          <Button onPress={() => navigation.navigate('Trip', { tripId: 'TRIP_ID' })}>
-            Go to trip
-          </Button>
-        </View>
+    <LoadingWrapper isLoading={loading}>
+      <View style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <View style={styles.helpContainer}>
+            <Button onPress={() => navigation.navigate('AddTrip')}>Add Trip</Button>
+          </View>
 
-        {data?.trips.map(trip => (
-          <>
-            {/* <Title key={trip.id}>{trip.name}</Title> */}
+          {data?.trips.map(trip => (
             <Card
+              key={trip.id}
               onPress={() => navigation.navigate('Trip', { tripId: trip.id })}
               style={{ marginBottom: 20 }}
             >
@@ -41,10 +39,10 @@ const TripsScreen = ({ navigation }) => {
                 }}
               />
             </Card>
-          </>
-        ))}
-      </ScrollView>
-    </View>
+          ))}
+        </ScrollView>
+      </View>
+    </LoadingWrapper>
   );
 };
 
