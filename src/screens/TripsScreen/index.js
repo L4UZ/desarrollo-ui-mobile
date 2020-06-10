@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Button } from 'react-native-paper';
+import { FAB } from 'react-native-paper';
 import { shape, func } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 
@@ -20,9 +20,6 @@ const TripsScreen = ({ navigation }) => {
     <LoadingWrapper isLoading={loading}>
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.helpContainer}>
-            <Button onPress={() => navigation.navigate('AddTrip')}>Add Trip</Button>
-          </View>
           {data?.trips.map(trip => (
             <Card
               key={trip.id}
@@ -32,6 +29,7 @@ const TripsScreen = ({ navigation }) => {
             />
           ))}
         </ScrollView>
+        <FAB icon="plus" style={styles.fab} onPress={() => navigation.navigate('AddTrip')} />
       </View>
     </LoadingWrapper>
   );

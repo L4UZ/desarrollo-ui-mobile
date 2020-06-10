@@ -21,12 +21,12 @@ const TripDetailScreen = ({
     <LoadingWrapper isLoading={loading}>
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          {data?.trip.places.map(place => (
+          {data?.trip.places.map((place, i) => (
             <Card
               onPress={() => navigation.navigate('Place', { placeId: place.id })}
               title={place.name}
               image={place.imagesSrc[0]}
-              key={place.id}
+              key={`${place.id}${i}`}
             />
           ))}
         </ScrollView>

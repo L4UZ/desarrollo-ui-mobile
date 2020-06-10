@@ -18,7 +18,7 @@ const ContinentsScreen = ({ navigation }) => {
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           {data?.continents.map(continent => (
-            <>
+            <View key={continent.id}>
               <Title style={styles.title} key={continent.id}>
                 {continent.name}
               </Title>
@@ -30,7 +30,7 @@ const ContinentsScreen = ({ navigation }) => {
                   key={region.id}
                 />
               ))}
-            </>
+            </View>
           ))}
         </ScrollView>
       </View>
