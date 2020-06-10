@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, ImageBackground, Text, TouchableOpacity } from 'react-native';
 import { func, string } from 'prop-types';
+import { Chip } from 'react-native-paper';
 
 import styles from './styles';
 
@@ -8,7 +9,12 @@ const Card = ({ onPress, image, title, distance }) => (
   <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
     <ImageBackground source={{ uri: image }} style={styles.imageBackground}>
       <View style={styles.overlay}>
-        <Text style={styles.title}>{`${title} ${distance}`}</Text>
+        {!!distance && (
+          <Chip style={styles.chip} icon="map-marker-radius">
+            {distance}
+          </Chip>
+        )}
+        <Text style={styles.title}>{title}</Text>
       </View>
     </ImageBackground>
   </TouchableOpacity>
@@ -22,7 +28,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  distance: '',
+  distance: null,
 };
 
 export default Card;

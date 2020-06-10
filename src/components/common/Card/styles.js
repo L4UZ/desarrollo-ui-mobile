@@ -4,7 +4,6 @@ export default StyleSheet.create({
   imageBackground: {
     height: 140,
     width: '100%',
-    position: 'relative',
     marginBottom: 7,
   },
   overlay: {
@@ -13,6 +12,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
     backgroundColor: 'rgba(52, 52, 52, 0.5)',
+  },
+  chip: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
   },
   title: {
     fontWeight: '400',
