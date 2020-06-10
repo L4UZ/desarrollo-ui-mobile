@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import { Title, List, Image } from 'react-native-paper';
+import React from 'react';
+import { Text, View, Image } from 'react-native';
+import { Title, List } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
-import { shape, string, bool } from 'prop-types';
+import { shape, string } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { Rating } from 'react-native-ratings';
 
 import { PLACE_DETAIL } from '../../api/queries';
+import LoadingWrapper from '../../components/common/LoadingWrapper';
 import styles from './styles';
 
 const PlaceDetailScreen = ({
@@ -16,58 +17,50 @@ const PlaceDetailScreen = ({
 }) => {
   const { data, loading } = useQuery(PLACE_DETAIL, { variables: { placeId } });
 
-  const [activitiesState, setActivitiesState] = useState(false);
-  const [reviewsState, setReviewsState] = useState(false);
-
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        {!loading && (
-          <>
-            <Title>{data.place.name}</Title>
-            <Text>{data.place.description}</Text>
+    <LoadingWrapper isLoading={loading || !data}>
+      <View style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <Title>{data?.place.name}</Title>
+          <Text>{data?.place.description}</Text>
 
-            <List.Section>
-              <List.Accordion title="Activities">
-                {data.place.activities.map(activity => (
-                  <List.Item
-                    title={`${activity.name} - $${activity.price}`}
-                    description={activity.description}
-                  />
-                ))}
-              </List.Accordion>
-
-              <List.Accordion title="Reviews">
-                {data.place.reviews.map(review => (
-                  <>
-                    <Rating
-                      ratingCount={5}
-                      startingValue={review.score}
-                      fractions={20}
-                      imageSize={25}
-                    />
-                    <List.Item
-                      title={review.comment}
-                      description={`By: ${review.userFullName} (${review.userEmail})`}
-                    />
-                  </>
-                ))}
-              </List.Accordion>
-            </List.Section>
-
-            {/* <View>
-              {data.place.imagesSrc.map(image => (
-                // <Image
-                //   style={{ heigth: 50, width: 50 }}
-                //   source={{ url: 'https://www.dw.com/image/44228683_303.jpg' }}
-                // />
-                <Text>{image}</Text>
+          <List.Section>
+            <List.Accordion title="Activities">
+              {data?.place.activities.map(activity => (
+                <List.Item
+                  key={activity.id}
+                  title={`${activity.name} - $${activity.price}`}
+                  description={activity.description}
+                />
               ))}
-            </View> */}
-          </>
-        )}
-      </ScrollView>
-    </View>
+            </List.Accordion>
+
+            <List.Accordion title="Reviews">
+              {data?.place.reviews.map(review => (
+                <View key={review.id}>
+                  <Rating
+                    ratingCount={5}
+                    startingValue={review.score}
+                    fractions={20}
+                    imageSize={25}
+                  />
+                  <List.Item
+                    title={review.comment}
+                    description={`By: ${review.userFullName} (${review.userEmail})`}
+                  />
+                </View>
+              ))}
+            </List.Accordion>
+          </List.Section>
+
+          <View>
+            {data?.place.imagesSrc.map((image, i) => (
+              <Image key={`${image}${i}`} height={50} width={50} source={{ uri: image }} />
+            ))}
+          </View>
+        </ScrollView>
+      </View>
+    </LoadingWrapper>
   );
 };
 
@@ -80,9 +73,6 @@ PlaceDetailScreen.propTypes = {
     params: shape({
       placeId: string.isRequired,
     }).isRequired,
-  }).isRequired,
-  state: shape({
-    expanded: bool,
   }).isRequired,
 };
 
