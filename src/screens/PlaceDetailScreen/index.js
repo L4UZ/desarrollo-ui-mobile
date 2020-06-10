@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Text, View } from 'react-native';
 import { Title, List, Image } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
 import { shape, string, bool } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
-import { Rating, AirbnbRating } from 'react-native-ratings';
+import { Rating } from 'react-native-ratings';
 
 import { PLACE_DETAIL } from '../../api/queries';
 import styles from './styles';
@@ -14,17 +15,10 @@ const PlaceDetailScreen = ({
     params: { placeId },
   },
 }) => {
-  const state = { expanded: 'true' };
   const { data, loading } = useQuery(PLACE_DETAIL, { variables: { placeId } });
 
-  // ratingCompleted(rating) {
-  //   console.log("Rating is: " + rating)
-  // }
-
-  // const handlePress = () =>
-  //   this.setState({
-  //     expanded: !this.state.expanded,
-  //   });
+  const [activitiesState, setActivitiesState] = useState(false);
+  const [reviewsState, setReviewsState] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -35,11 +29,7 @@ const PlaceDetailScreen = ({
             <Text>{data.place.description}</Text>
 
             <List.Section>
-              <List.Accordion
-                title="Activities"
-                // expanded={this.state.expanded}
-                // onPress={this.handlePress}
-              >
+              <List.Accordion title="Activities">
                 {data.place.activities.map(activity => (
                   <List.Item
                     title={`${activity.name} - $${activity.price}`}
@@ -48,11 +38,7 @@ const PlaceDetailScreen = ({
                 ))}
               </List.Accordion>
 
-              <List.Accordion
-                title="Reviews"
-                // expanded={this.state.expanded}
-                // onPress={this.handlePress}
-              >
+              <List.Accordion title="Reviews">
                 {data.place.reviews.map(review => (
                   <>
                     <Rating
