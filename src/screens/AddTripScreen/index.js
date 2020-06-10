@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import { Title, TextInput, Button, ActivityIndicator, HelperText } from 'react-native-paper';
+import { TextInput, Button, ActivityIndicator, HelperText } from 'react-native-paper';
 import { useMutation } from '@apollo/react-hooks';
 import { Formik } from 'formik';
 
@@ -15,8 +15,7 @@ const AddTripScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Title style={{ alignSelf: 'center' }}>ADD TRIP</Title>
-      <View>
+      <View style={styles.form}>
         <Formik
           initialValues={{ name: '' }}
           onSubmit={(values, { resetForm }) => {

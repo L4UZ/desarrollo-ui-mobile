@@ -13,7 +13,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   form: {
-    marginTop: 10,
+    marginTop: 100,
+    marginHorizontal: 10,
   },
   formElement: {
     marginTop: 20,
