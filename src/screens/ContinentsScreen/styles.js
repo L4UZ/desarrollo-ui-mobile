@@ -12,4 +12,8 @@ export default StyleSheet.create({
     marginTop: 15,
     alignItems: 'center',
   },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
 });
