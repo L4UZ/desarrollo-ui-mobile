@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import { Title, List, Image } from 'react-native-paper';
+import { Text, View, Image } from 'react-native';
+import { Title, List } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
 import { shape, string, bool } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';

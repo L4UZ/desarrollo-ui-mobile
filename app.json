@@ -2,7 +2,10 @@
   "expo": {
     "name": "uTravel",
     "slug": "utravel",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/logo192.png",
@@ -15,7 +18,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -38,6 +43,8 @@
     },
     "web": {
       "favicon": "./src/assets/images/logo.svg"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/L4UZ/desarrollo-ui-mobile"
   }
 }

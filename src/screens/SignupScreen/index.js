@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { View, Image, ScrollView } from 'react-native';
 import { Title, TextInput, Button, ActivityIndicator, HelperText } from 'react-native-paper';
 import { useMutation } from '@apollo/react-hooks';

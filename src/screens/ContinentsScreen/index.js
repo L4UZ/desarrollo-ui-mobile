@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Button, Card, Title } from 'react-native-paper';
+import { Card, Title } from 'react-native-paper';
 import { shape, func } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 
