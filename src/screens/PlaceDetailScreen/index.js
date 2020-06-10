@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { Title, List, Image } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
