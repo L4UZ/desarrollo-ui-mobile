@@ -64,11 +64,11 @@ const SignupScreen = () => {
                       onBlur={handleBlur('firstName')}
                       value={values.firstName}
                     />
-                    {touched?.firstName && errors?.firstName ? (
+                    {touched?.firstName && errors?.firstName && (
                       <HelperText type="error" visible>
                         {errors.firstName}
                       </HelperText>
-                    ) : null}
+                    )}
                   </View>
                   <View style={{ marginTop: 2 }}>
                     <TextInput
@@ -84,11 +84,11 @@ const SignupScreen = () => {
                       onBlur={handleBlur('lastName')}
                       value={values.lastName}
                     />
-                    {touched?.lastName && errors?.lastName ? (
+                    {touched?.lastName && errors?.lastName && (
                       <HelperText type="error" visible>
                         {errors.lastName}
                       </HelperText>
-                    ) : null}
+                    )}
                   </View>
                   <View style={{ marginTop: 2 }}>
                     <TextInput
@@ -104,11 +104,11 @@ const SignupScreen = () => {
                       onBlur={handleBlur('email')}
                       value={values.email}
                     />
-                    {touched?.email && errors?.email ? (
+                    {touched?.email && errors?.email && (
                       <HelperText type="error" visible>
                         {errors.email}
                       </HelperText>
-                    ) : null}
+                    )}
                   </View>
                   <View style={{ marginTop: 2 }}>
                     <TextInput
@@ -123,11 +123,11 @@ const SignupScreen = () => {
                       onBlur={handleBlur('password')}
                       value={values.password}
                     />
-                    {touched?.password && errors?.password ? (
+                    {touched?.password && errors?.password && (
                       <HelperText type="error" visible>
                         {errors.password}
                       </HelperText>
-                    ) : null}
+                    )}
                   </View>
                   <View style={{ marginTop: 2 }}>
                     <TextInput
@@ -142,11 +142,11 @@ const SignupScreen = () => {
                       onBlur={handleBlur('passwordConfirmation')}
                       value={values.passwordConfirmation}
                     />
-                    {touched?.passwordConfirmation && errors?.passwordConfirmation ? (
+                    {touched?.passwordConfirmation && errors?.passwordConfirmation && (
                       <HelperText type="error" visible>
                         {errors.passwordConfirmation}
                       </HelperText>
-                    ) : null}
+                    )}
                   </View>
                   <Button mode="contained" onPress={handleSubmit} style={styles.formElement}>
                     Sign up
