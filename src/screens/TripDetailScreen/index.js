@@ -17,6 +17,8 @@ const TripDetailScreen = ({
 }) => {
   const { data, loading } = useQuery(TRIP, { variables: { tripId } });
 
+  navigation.setOptions({ title: data?.trip.name || 'Trip' });
+
   return (
     <LoadingWrapper isLoading={loading}>
       <View style={styles.container}>
@@ -42,6 +44,7 @@ TripDetailScreen.navigationOptions = {
 TripDetailScreen.propTypes = {
   navigation: shape({
     navigate: func.isRequired,
+    setOptions: func.isRequired,
   }).isRequired,
   route: shape({
     params: shape({

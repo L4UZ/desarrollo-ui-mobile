@@ -17,6 +17,8 @@ const RegionScreen = ({
 }) => {
   const { data, loading } = useQuery(REGION_DETAIL, { variables: { regionId } });
 
+  navigation.setOptions({ title: data?.region.name || 'Region' });
+
   return (
     <LoadingWrapper isLoading={loading}>
       <View style={styles.container}>
@@ -42,6 +44,7 @@ RegionScreen.navigationOptions = {
 RegionScreen.propTypes = {
   navigation: shape({
     navigate: func.isRequired,
+    setOptions: func.isRequired,
   }).isRequired,
   route: shape({
     params: shape({

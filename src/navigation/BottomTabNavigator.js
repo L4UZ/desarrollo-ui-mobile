@@ -30,7 +30,7 @@ const getHeaderOptions = route => {
     case 'PlacesByDistance':
       return { headerShown: false };
     case 'Profile':
-      return { headerShown: true };
+      return { headerShown: true, title: 'Profile' };
     default:
       return '';
   }

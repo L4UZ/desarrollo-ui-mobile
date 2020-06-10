@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import { Title, List } from 'react-native-paper';
+import { List } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
-import { shape, string } from 'prop-types';
+import { shape, string, func } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { Rating } from 'react-native-ratings';
 
@@ -14,14 +14,16 @@ const PlaceDetailScreen = ({
   route: {
     params: { placeId },
   },
+  navigation,
 }) => {
   const { data, loading } = useQuery(PLACE_DETAIL, { variables: { placeId } });
+
+  navigation.setOptions({ title: data?.place.name || 'Place' });
 
   return (
     <LoadingWrapper isLoading={loading || !data}>
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <Title>{data?.place.name}</Title>
           <Text>{data?.place.description}</Text>
 
           <List.Section>
@@ -74,6 +76,7 @@ PlaceDetailScreen.propTypes = {
       placeId: string.isRequired,
     }).isRequired,
   }).isRequired,
+  navigation: shape({ setOptions: func.isRequired }).isRequired,
 };
 
 export default PlaceDetailScreen;
