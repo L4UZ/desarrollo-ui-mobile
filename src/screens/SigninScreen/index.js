@@ -51,9 +51,8 @@ const SigninScreen = () => {
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
                     value={values.email}
-                    error={errors.email && touched.email}
                   />
-                  {errors?.email && (
+                  {touched?.email && errors?.email && (
                     <HelperText type="error" visible>
                       {errors.email}
                     </HelperText>
@@ -71,9 +70,8 @@ const SigninScreen = () => {
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
                     value={values.password}
-                    error={errors.password && touched.password}
                   />
-                  {errors?.password && (
+                  {touched?.password && errors?.password && (
                     <HelperText type="error" visible>
                       {errors.password}
                     </HelperText>

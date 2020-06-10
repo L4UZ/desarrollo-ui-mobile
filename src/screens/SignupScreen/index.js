@@ -63,9 +63,8 @@ const SignupScreen = () => {
                       onChangeText={handleChange('firstName')}
                       onBlur={handleBlur('firstName')}
                       value={values.firstName}
-                      error={errors.firstName && touched.firstName}
                     />
-                    {errors.firstName ? (
+                    {touched?.firstName && errors?.firstName ? (
                       <HelperText type="error" visible>
                         {errors.firstName}
                       </HelperText>
@@ -84,9 +83,8 @@ const SignupScreen = () => {
                       onChangeText={handleChange('lastName')}
                       onBlur={handleBlur('lastName')}
                       value={values.lastName}
-                      error={errors.lastName && touched.lastName}
                     />
-                    {errors.lastName ? (
+                    {touched?.lastName && errors?.lastName ? (
                       <HelperText type="error" visible>
                         {errors.lastName}
                       </HelperText>
@@ -105,9 +103,8 @@ const SignupScreen = () => {
                       onChangeText={handleChange('email')}
                       onBlur={handleBlur('email')}
                       value={values.email}
-                      error={errors.email && touched.email}
                     />
-                    {errors.email ? (
+                    {touched?.email && errors?.email ? (
                       <HelperText type="error" visible>
                         {errors.email}
                       </HelperText>
@@ -125,9 +122,8 @@ const SignupScreen = () => {
                       onChangeText={handleChange('password')}
                       onBlur={handleBlur('password')}
                       value={values.password}
-                      error={errors.password && touched.password}
                     />
-                    {errors.password ? (
+                    {touched?.password && errors?.password ? (
                       <HelperText type="error" visible>
                         {errors.password}
                       </HelperText>
@@ -145,9 +141,8 @@ const SignupScreen = () => {
                       onChangeText={handleChange('passwordConfirmation')}
                       onBlur={handleBlur('passwordConfirmation')}
                       value={values.passwordConfirmation}
-                      error={errors.passwordConfirmation && touched.passwordConfirmation}
                     />
-                    {errors.passwordConfirmation ? (
+                    {touched?.passwordConfirmation && errors?.passwordConfirmation ? (
                       <HelperText type="error" visible>
                         {errors.passwordConfirmation}
                       </HelperText>
