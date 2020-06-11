@@ -8,10 +8,11 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginHorizontal: 10,
+    paddingHorizontal: 10,
   },
   contentContainer: {
     paddingTop: 30,
+    paddingBottom: 100,
   },
   reviewItem: {
     borderBottomColor: Theme.colors.disabled,

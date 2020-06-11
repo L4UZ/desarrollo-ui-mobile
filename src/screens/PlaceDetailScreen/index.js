@@ -60,7 +60,7 @@ const PlaceDetailScreen = ({
             >
               {data?.place.reviews.map(review => (
                 <View key={review.id} style={styles.reviewItem}>
-                  <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                  <View style={styles.reviewItemTitle}>
                     <Rating
                       ratingCount={5}
                       startingValue={review.score}
@@ -73,10 +73,6 @@ const PlaceDetailScreen = ({
                     </Caption>
                   </View>
                   <Text>{review.comment}</Text>
-                  {/* <List.Item
-                    title={review.comment}
-                    description={`By: ${review.userFullName} (${review.userEmail})`}
-                  /> */}
                 </View>
               ))}
             </List.Accordion>

@@ -8,11 +8,12 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 20,
+    paddingBottom: 100,
   },
   fab: {
     position: 'absolute',
-    backgroundColor: Theme.colors.primary,
+    backgroundColor: Theme.colors.accent,
     bottom: 20,
     right: 20,
   },

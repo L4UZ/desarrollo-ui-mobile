@@ -74,7 +74,13 @@ const AddReview = ({ placeId }) => {
               value={values.comment}
               mode="outlined"
             />
-            <Button loading={loading} disabled={loading} mode="contained" onPress={handleSubmit}>
+            <Button
+              loading={loading}
+              disabled={loading}
+              mode="contained"
+              onPress={handleSubmit}
+              style={styles.button}
+            >
               Submit
             </Button>
           </View>
