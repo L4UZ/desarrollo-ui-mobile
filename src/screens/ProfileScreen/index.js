@@ -18,7 +18,7 @@ const ProfileScreen = () => {
       <View style={styles.userInformationContainer}>
         <CenterWrapper>
           <Title>{`${currentUser?.firstName} ${currentUser?.lastName}`}</Title>
-          <Caption>{currentUser.email}</Caption>
+          <Caption>{currentUser?.email}</Caption>
         </CenterWrapper>
       </View>
       <Button onPress={resetToken} style={styles.signOutButton} mode="contained">
