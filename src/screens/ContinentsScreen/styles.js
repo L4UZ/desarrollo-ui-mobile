@@ -1,22 +1,30 @@
 import { StyleSheet } from 'react-native';
+import Theme from '../../constants/Theme';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
   },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
   title: {
-    fontWeight: 'bold',
-    fontSize: 30,
-    marginTop: 40,
+    fontWeight: '100',
+    fontSize: 50,
+    paddingTop: 65,
     marginBottom: 20,
-    textAlign: 'center',
+    paddingHorizontal: 15,
+  },
+  anchorsContainer: {
+    paddingHorizontal: 40,
+    marginTop: 15,
+  },
+  anchors: {
+    marginVertical: 5,
+    borderColor: Theme.colors.accent,
+  },
+  anchorsContent: {
+    paddingVertical: 10,
+  },
+  anchorsLabel: {
+    fontSize: 18,
   },
 });
