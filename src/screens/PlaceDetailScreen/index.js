@@ -39,7 +39,7 @@ const PlaceDetailScreen = ({
           {data?.place.description ? (
             <Text>{data?.place.description}</Text>
           ) : (
-            <Text>No description Provided</Text>
+            <Text>No description provided</Text>
           )}
 
           <Accordions activities={data?.place.activities} reviews={data?.place.reviews} />
