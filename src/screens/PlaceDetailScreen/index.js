@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, Image } from 'react-native';
-import { List, Caption } from 'react-native-paper';
+import { List, Caption, Title } from 'react-native-paper';
 import { ScrollView } from 'react-native-gesture-handler';
 import { shape, string, func } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
@@ -45,11 +45,13 @@ const PlaceDetailScreen = ({
               onPress={() => setIsActivitiesExpanded(!isActivitiesExpanded)}
             >
               {data?.place.activities.map(activity => (
-                <List.Item
-                  key={activity.id}
-                  title={`${activity.name} - $${activity.price}`}
-                  description={activity.description}
-                />
+                <View key={activity.id} style={styles.reviewItem}>
+                  <Text style={{ marginBottom: 5 }}>
+                    <Title style={{ fontWeight: '600' }}>{`${activity.name} `}</Title>
+                    <Title style={{ fontWeight: '400' }}>{`- $${activity.price}`}</Title>
+                  </Text>
+                  <Text style={{ flexShrink: 1 }}>{activity.description}</Text>
+                </View>
               ))}
             </List.Accordion>
 
@@ -68,11 +70,11 @@ const PlaceDetailScreen = ({
                       imageSize={15}
                       readonly
                     />
-                    <Caption style={{ marginLeft: 10 }}>
-                      {` ${review.userFullName} (${review.userEmail})`}
-                    </Caption>
                   </View>
                   <Text>{review.comment}</Text>
+                  <Caption style={{ marginLeft: 0 }}>
+                    {`${review.userFullName} (${review.userEmail})`}
+                  </Caption>
                 </View>
               ))}
             </List.Accordion>

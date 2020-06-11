@@ -17,3 +17,5 @@ web-build/
 debug.log
 
 package-lock.json
+
+yarn.lock

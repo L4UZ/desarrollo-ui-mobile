@@ -19,12 +19,13 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     marginBottom: 20,
     paddingBottom: 20,
-    marginHorizontal: 10,
-    paddingHorizontal: 10,
+    marginHorizontal: 5,
+    paddingHorizontal: 5,
   },
   reviewItemTitle: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
 });
