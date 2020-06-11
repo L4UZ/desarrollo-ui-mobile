@@ -44,6 +44,7 @@
     "react-native-ratings": "^7.2.0",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
+    "react-native-snap-carousel": "^3.9.1",
     "react-native-scroll-into-view": "^1.0.3",
     "react-native-web": "~0.11.7",
     "yup": "^0.29.1"
