@@ -20,6 +20,7 @@ export const ADD_REVIEW_MUTATION = gql`
       score
       userFullName
       userEmail
+      overallScore
     }
   }
 `;

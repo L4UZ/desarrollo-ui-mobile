@@ -22,7 +22,13 @@ const AddReview = ({ placeId }) => {
       cache.writeQuery({
         query: PLACE_DETAIL,
         variables: { placeId },
-        data: { place: { ...place, reviews: [...place.reviews, addedReview] } },
+        data: {
+          place: {
+            ...place,
+            overallScore: addedReview.overallScore,
+            reviews: [...place.reviews, addedReview],
+          },
+        },
       });
     },
   });
@@ -52,7 +58,7 @@ const AddReview = ({ placeId }) => {
           <View>
             <AirbnbRating
               ratingCount={5}
-              defaultRating={0}
+              defaultRating={values.score}
               fractions={0}
               size={30}
               showRating={false}
