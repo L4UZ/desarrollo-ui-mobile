@@ -52,7 +52,7 @@ const AddReview = ({ placeId }) => {
           <View>
             <AirbnbRating
               ratingCount={5}
-              defaultRating={0}
+              defaultRating={values.score}
               fractions={0}
               size={30}
               showRating={false}
