@@ -3,20 +3,33 @@ import { View } from 'react-native';
 import { TextInput, Button, ActivityIndicator, HelperText } from 'react-native-paper';
 import { useMutation } from '@apollo/react-hooks';
 import { Formik } from 'formik';
+import { shape, func } from 'prop-types';
 
 import { ADD_TRIP } from '../../api/mutations';
+import { USER_TRIPS } from '../../api/queries';
 import { useAuth } from '../../AuthProvider';
 import styles from './styles';
 import LoadingWrapper from '../../components/common/LoadingWrapper';
+import CenterWrapper from '../../components/common/CenterWrapper';
 
-const AddTripScreen = () => {
+const AddTripScreen = ({ navigation }) => {
   const { token } = useAuth();
 
-  const [addTrip, { loading, error }] = useMutation(ADD_TRIP);
+  const [addTrip, { loading, error }] = useMutation(ADD_TRIP, {
+    onCompleted: () => navigation.goBack(),
+    update(cache, { data: { addTrip: newTrip } }) {
+      const { trips } = cache.readQuery({ query: USER_TRIPS, variables: { token } });
+      cache.writeQuery({
+        query: USER_TRIPS,
+        variables: { token },
+        data: { trips: [...trips, newTrip] },
+      });
+    },
+  });
 
   return (
     <LoadingWrapper isLoading={loading}>
-      <View style={styles.container}>
+      <CenterWrapper>
         <View style={styles.form}>
           <Formik
             initialValues={{ name: '' }}
@@ -25,21 +38,17 @@ const AddTripScreen = () => {
               resetForm();
             }}
           >
-            {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-              <View style={styles.form}>
+            {({ values, handleChange, handleBlur, handleSubmit }) => (
+              <View>
                 <TextInput
-                  autoCapitalize="none"
-                  autoCompleteType="name"
-                  keyboardType="default"
+                  autoCapitalize="words"
                   label="Trip Name"
                   mode="outlined"
                   placeholder="Enter your trip's name"
                   required
-                  textContentType="name"
                   onChangeText={handleChange('name')}
                   onBlur={handleBlur('name')}
                   value={values.name}
-                  error={errors.name && touched.name}
                 />
                 <Button mode="contained" onPress={handleSubmit} style={styles.formElement}>
                   Add trip
@@ -54,9 +63,13 @@ const AddTripScreen = () => {
             </HelperText>
           )}
         </View>
-      </View>
+      </CenterWrapper>
     </LoadingWrapper>
   );
+};
+
+AddTripScreen.propTypes = {
+  navigation: shape({ goBack: func.isRequired }).isRequired,
 };
 
 AddTripScreen.navigationOptions = {

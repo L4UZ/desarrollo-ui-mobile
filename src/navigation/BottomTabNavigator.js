@@ -14,6 +14,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import SignupScreen from '../screens/SignupScreen';
 
 import { useAuth } from '../AuthProvider';
+import Theme from '../constants/Theme';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Signin';
@@ -29,7 +30,7 @@ const getHeaderOptions = route => {
     case 'PlacesByDistance':
       return { headerShown: false };
     case 'Profile':
-      return { headerShown: true };
+      return { headerShown: true, title: 'Profile' };
     default:
       return '';
   }
@@ -41,7 +42,13 @@ const BottomTabNavigator = ({ navigation, route }) => {
   navigation.setOptions(getHeaderOptions(route));
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator
+      initialRouteName={INITIAL_ROUTE_NAME}
+      tabBarOptions={{
+        activeTintColor: Theme.colors.primary,
+        inactiveTintColor: Theme.colors.disabled,
+      }}
+    >
       {token ? (
         <>
           <BottomTab.Screen

@@ -9,7 +9,7 @@ const TabBarIcon = ({ name, focused }) => (
     name={name}
     size={30}
     style={{ marginBottom: -3 }}
-    color={focused ? theme.colors.accent : theme.colors.disabled}
+    color={focused ? theme.colors.primary : theme.colors.disabled}
   />
 );
 

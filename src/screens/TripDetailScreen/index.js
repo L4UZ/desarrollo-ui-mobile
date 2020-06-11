@@ -17,16 +17,18 @@ const TripDetailScreen = ({
 }) => {
   const { data, loading } = useQuery(TRIP, { variables: { tripId } });
 
+  navigation.setOptions({ title: data?.trip.name || 'Trip' });
+
   return (
     <LoadingWrapper isLoading={loading}>
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          {data?.trip.places.map(place => (
+          {data?.trip.places.map((place, i) => (
             <Card
               onPress={() => navigation.navigate('Place', { placeId: place.id })}
               title={place.name}
               image={place.imagesSrc[0]}
-              key={place.id}
+              key={`${place.id}${i}`}
             />
           ))}
         </ScrollView>
@@ -42,6 +44,7 @@ TripDetailScreen.navigationOptions = {
 TripDetailScreen.propTypes = {
   navigation: shape({
     navigate: func.isRequired,
+    setOptions: func.isRequired,
   }).isRequired,
   route: shape({
     params: shape({
