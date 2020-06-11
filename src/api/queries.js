@@ -105,3 +105,13 @@ export const TRIP = gql`
     }
   }
 `;
+
+export const ME = gql`
+  query Me($token: String!) {
+    me(token: $token) {
+      firstName
+      lastName
+      email
+    }
+  }
+`;

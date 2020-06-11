@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { useFocusEffect } from '@react-navigation/native';
+import React, { useCallback, useRef } from 'react';
+import { useFocusEffect, useScrollToTop } from '@react-navigation/native';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { shape, func } from 'prop-types';
@@ -29,10 +29,20 @@ const PlacesByDistanceScreen = ({ navigation }) => {
     }, [data])
   );
 
+  const scrollRef = useRef();
+
+  useScrollToTop(scrollRef);
+
   return (
     <LoadingWrapper isLoading={loading || !data}>
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+          ref={ref => {
+            scrollRef.current = ref;
+          }}
+        >
           {data?.placesByDistance.map(place => (
             <Card
               onPress={() => navigation.navigate('Place', { placeId: place.id })}
