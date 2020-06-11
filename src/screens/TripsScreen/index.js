@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { FAB } from 'react-native-paper';
 import { shape, func } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
+import { useScrollToTop } from '@react-navigation/native';
 
 import { useAuth } from '../../AuthProvider/index';
 import { USER_TRIPS } from '../../api/queries';
@@ -13,13 +14,22 @@ import Card from '../../components/common/Card';
 
 const TripsScreen = ({ navigation }) => {
   const { token } = useAuth();
-
   const { data, loading } = useQuery(USER_TRIPS, { variables: { token } });
+
+  const scrollRef = useRef();
+
+  useScrollToTop(scrollRef);
 
   return (
     <LoadingWrapper isLoading={loading}>
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+          ref={ref => {
+            scrollRef.current = ref;
+          }}
+        >
           {data?.trips.map(trip => (
             <Card
               key={trip.id}
