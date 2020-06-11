@@ -5,11 +5,13 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { shape, string, func } from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { Rating } from 'react-native-ratings';
+import Carousel from 'react-native-snap-carousel';
 
 import { PLACE_DETAIL } from '../../api/queries';
 import LoadingWrapper from '../../components/common/LoadingWrapper';
 import AddReview from '../../components/AddReview';
 import styles from './styles';
+import Layout from '../../constants/Layout';
 
 const PlaceDetailScreen = ({
   route: {
@@ -23,24 +25,37 @@ const PlaceDetailScreen = ({
 
   navigation.setOptions({ title: data?.place.name || 'Place' });
 
+  // eslint-disable-next-line react/prop-types
+  const renderItem = ({ item }) => <Image style={{ aspectRatio: 16 / 9 }} source={{ uri: item }} />;
+
   return (
     <LoadingWrapper isLoading={loading || !data}>
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.overallScore}>
-            <Rating
-              ratingCount={5}
-              startingValue={data?.place.overallScore}
-              fractions={0}
-              imageSize={35}
-              readonly
+        <ScrollView contentContainerStyle={styles.contentContainer}>
+          <Rating
+            ratingCount={5}
+            startingValue={data?.place.overallScore}
+            fractions={0}
+            imageSize={35}
+            readonly
+          />
+          <View style={{ marginVertical: 30 }}>
+            <Carousel
+              layout="tinder"
+              loop
+              data={data?.place.imagesSrc}
+              renderItem={renderItem}
+              sliderWidth={Layout.window.width - 30}
+              itemWidth={Layout.window.width - 30}
             />
           </View>
+
           <Text>{data?.place.description}</Text>
 
           <List.Section>
             <List.Accordion
               title="Activities"
+              titleStyle={styles.accordionTitle}
               expanded={isActivitiesExpanded}
               onPress={() => setIsActivitiesExpanded(!isActivitiesExpanded)}
             >
@@ -57,6 +72,7 @@ const PlaceDetailScreen = ({
 
             <List.Accordion
               title="Reviews"
+              titleStyle={styles.accordionTitle}
               expanded={isReviewsExpanded}
               onPress={() => setIsReviewsExpanded(!isReviewsExpanded)}
             >
@@ -79,12 +95,6 @@ const PlaceDetailScreen = ({
               ))}
             </List.Accordion>
           </List.Section>
-
-          <View>
-            {data?.place.imagesSrc.map((image, i) => (
-              <Image key={`${image}${i}`} height={50} width={50} source={{ uri: image }} />
-            ))}
-          </View>
 
           {!!data && <AddReview placeId={data?.place.id} />}
         </ScrollView>

@@ -2,8 +2,8 @@ import React from 'react';
 import { Formik } from 'formik';
 import { useMutation } from '@apollo/react-hooks';
 import { string } from 'prop-types';
-import { Button, Title, TextInput } from 'react-native-paper';
-import { View } from 'react-native';
+import { Button, TextInput } from 'react-native-paper';
+import { View, Text } from 'react-native';
 import { AirbnbRating } from 'react-native-ratings';
 
 import { useAuth } from '../../AuthProvider/index';
@@ -29,9 +29,9 @@ const AddReview = ({ placeId }) => {
 
   return (
     <View style={styles.container}>
-      <Title variant="h6" gutterBottom>
+      <Text gutterBottom style={styles.title}>
         Add review
-      </Title>
+      </Text>
       <Formik
         initialValues={initialValues}
         onSubmit={({ comment, score }, { resetForm }) => {
@@ -49,7 +49,7 @@ const AddReview = ({ placeId }) => {
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-          <View>
+          <View style={styles.form}>
             <AirbnbRating
               ratingCount={5}
               defaultRating={0}

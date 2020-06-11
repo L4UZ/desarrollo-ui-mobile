@@ -2,17 +2,14 @@ import { StyleSheet } from 'react-native';
 import Theme from '../../constants/Theme';
 
 export default StyleSheet.create({
-  overallScore: {
-    marginBottom: 20,
-  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 10,
   },
   contentContainer: {
     paddingTop: 30,
     paddingBottom: 100,
+    paddingHorizontal: 15,
   },
   reviewItem: {
     borderBottomColor: Theme.colors.disabled,
@@ -27,5 +24,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+  },
+  accordionTitle: {
+    fontSize: 25,
+    marginLeft: -10,
   },
 });
