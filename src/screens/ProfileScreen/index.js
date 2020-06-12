@@ -17,8 +17,14 @@ const ProfileScreen = () => {
       <Avatar.Icon size={100} icon="account" />
       <View style={styles.userInformationContainer}>
         <CenterWrapper>
-          <Title>{`${currentUser?.firstName} ${currentUser?.lastName}`}</Title>
-          <Caption>{currentUser?.email}</Caption>
+          {currentUser ? (
+            <>
+              <Title>{`${currentUser?.firstName} ${currentUser?.lastName}`}</Title>
+              <Caption>{currentUser?.email}</Caption>
+            </>
+          ) : (
+            <View />
+          )}
         </CenterWrapper>
       </View>
       <Button onPress={resetToken} style={styles.signOutButton} mode="contained">

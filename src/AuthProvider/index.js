@@ -22,7 +22,7 @@ const Provider = ({ children }) => {
   const setTokenOverride = newToken => {
     setToken(newToken);
 
-    useQuery(ME, { variables: { token: newToken } });
+    if (newToken) useQuery(ME, { variables: { token: newToken } });
 
     if (!newToken) AsyncStorage.removeItem('UTRAVEL_TOKEN');
     else AsyncStorage.setItem('UTRAVEL_TOKEN', newToken);
