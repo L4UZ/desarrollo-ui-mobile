@@ -27,7 +27,7 @@ This project was made following Material Design style guide. For this, the proje
 
 - **Law of familiarity**
 
-  This law was used in the
+  This law was used in the bottom tab navigation by using familiar icons that let the user recognize each of the system's functianalities
 
 ### Design patterns
 
